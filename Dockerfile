@@ -1,4 +1,4 @@
-FROM golang:1.20rc1-alpine3.17
+FROM circleci/golang:1.9.7
 
 WORKDIR /usr/src/app
 
@@ -7,5 +7,3 @@ COPY cmd ./cmd/
 RUN go mod download && go mod verify
 RUN go test -v ./cmd/
 RUN go build -v -o /usr/local/bin/ ./...
-
-ENTRYPOINT ["/usr/local/bin/image-updater"]
